@@ -1,4 +1,10 @@
+from os import path
+script_dir = path.abspath( path.dirname( __file__ ) )
+print( script_dir )
+
 print("Démarrage 'boot.py'")
+
+
 exec(open(
     '/home/pi/PICONFLEX2000-CLIENT/launch.py').read())  # Permet de se servir directement de toutes les fonctionnalités de la box quand il est lancé (Très utile pour DEV)
 try:
