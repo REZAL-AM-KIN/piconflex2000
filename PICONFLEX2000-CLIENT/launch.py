@@ -1,0 +1,5 @@
+print("Demarrage 'launch.py'")
+exec(open('/home/pi/PICONFLEX2000-CLIENT/setting.py').read())
+exec(open('/home/pi/PICONFLEX2000-CLIENT/config.py').read())
+exec(open('/home/pi/PICONFLEX2000-CLIENT/importation.py').read())
+exec(open('/home/pi/PICONFLEX2000-CLIENT/setup.py').read())
