@@ -58,7 +58,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             if argent<0:
                 hint("APPELLER REZAL",3) #Le rezal doit regarder l'historique de la carte et vérifier que toute les caisses sont synchro
                 hint("DESYNCH BDD",4) #Affichage problème (Si ce message s'affiche pendant un gala c'est pas bon: soit la personne est un tricheur, soit une box fonctionne en mode hors ligne)
-                DATA_add('/home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addLog(setting.numeroBox,setting.nomBox,"DESYNCH BDD",str(STRING_uidStrToInt(UID)))) #Ajout du message dans les logs
+                DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addLog(setting.numeroBox,setting.nomBox,"DESYNCH BDD",str(STRING_uidStrToInt(UID)))) #Ajout du message dans les logs
                 break #Arret de la transaction
 
     # Bloc de traitement des données de la carte en mode hors ligne ou sans réseau
@@ -79,7 +79,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                 break #Arret de la transaction
             hint("SYNCH RFID H CODE",4) #Affichage synchronisation
             RFID_setHashCodeGuinche(UID) #Ecriture RFID du Hash du codeGuinche sur la carte
-            DATA_add('/home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addCarte(STRING_uidStrToInt(UID))) #Ajout de la carte dans la BDD pour une future synchronisation
+            DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addCarte(STRING_uidStrToInt(UID))) #Ajout de la carte dans la BDD pour une future synchronisation
             hint("SYNCH RFID H UID",4) #Affichage synchronisation
             RFID_setHashUID(UID)
             hint("SYNCH RFID ARGENT",4) #Affichage synchronisation
@@ -128,6 +128,6 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
         hint("NE PAS SERVIR",3)
         break #Arret de la transaction
     # Si le nouveau montant n'est pas négatif, on effectue le débuquage sur la bdd puis sur la carte
-    DATA_add('/home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addArgent(STRING_uidStrToInt(UID),montant)+QUERRY_addTransaction(produit,nombre,setting.numeroBox,STRING_uidStrToInt(UID),montant,reference)) #Ajout des requetes pour la BDD
+    DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addArgent(STRING_uidStrToInt(UID),montant)+QUERRY_addTransaction(produit,nombre,setting.numeroBox,STRING_uidStrToInt(UID),montant,reference)) #Ajout des requetes pour la BDD
     hint("NE PAS RETIRER CARTE",4) #Avertissement sur lequel il faut lourdement insister en mode hors ligne!
     RFID_setArgent(newMontant,UID) #Ecriture du nouveau montant

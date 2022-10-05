@@ -1,9 +1,11 @@
+projet_path="/".join(__file__.split("/")[:-2])+"/"
+
 print("Demarrage 'setup.py'")
 print("Importation Drivers")
-exec(open('/home/pi/PICONFLEX2000-CLIENT/HD44780.py').read()) #Execute le script de contrôl de l'écran (Si beug de la box, l'écran est mal branché ou mort)
-exec(open('/home/pi/PICONFLEX2000-CLIENT/MFRC522.py').read()) #Execute le script de contrôl du lecteur RFID
+exec(open(projet_path+'PICONFLEX2000-CLIENT/HD44780.py').read()) #Execute le script de contrôl de l'écran (Si beug de la box, l'écran est mal branché ou mort)
+exec(open(projet_path+'PICONFLEX2000-CLIENT/MFRC522.py').read()) #Execute le script de contrôl du lecteur RFID
 print("Importation Fonctions")
-for root, dirs, files in os.walk("/home/pi/PICONFLEX2000-FONCTIONS"): #Scan toute les scripts du dossier des fonctions du système
+for root, dirs, files in os.walk(projet_path+"PICONFLEX2000-FONCTIONS"): #Scan toute les scripts du dossier des fonctions du système
         for names in files:
             if names[-3:]==".py": #Evite l'execution du dossier .git
                 print(names)

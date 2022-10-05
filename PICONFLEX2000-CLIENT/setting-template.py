@@ -3,6 +3,7 @@ print("Demarrage 'setting.py'")
 
 # Définition des variables reliée à l'objet setting définissant les paramètres de la box. Ces paramètres sont sauvegardés et résistent au reboot
 class setting:
+    projet_path = "/".join(__file__.split("/")[:-2]) + "/"
     # Nom de la box (Données par la BDD au démarrage), il définie le rôle de la box selon la première lettre (ATTENTION: Première lettre toujours en majuscule)
     nomBox = 'BZ2'
     # Numéro de la box, permet d'identifié de façon unique les boxs (clé primaire) pour la BDD

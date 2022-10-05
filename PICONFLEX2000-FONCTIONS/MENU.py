@@ -114,13 +114,13 @@ def MENU_MAJGitClone():
 def MENU_githubPull():
     if setting.rezalNet:
         hint("Direction FONCTIONS",4)
-        os.chdir("/home/pi/PICONFLEX2000-FONCTIONS")
+        os.chdir(setting.projet_path+"PICONFLEX2000-FONCTIONS")
         hint("git pull FONCTIONS",4)
         if os.system("sudo git pull")!=0:
             hint("Echec pull FONCTIONS",4)
             REZAL_exit()
         hint("Direction CLIENT",4)
-        os.chdir("/home/pi/PICONFLEX2000-CLIENT")
+        os.chdir(setting.projet_path+"PICONFLEX2000-CLIENT")
         hint("git pull CLIENT",4)
         if os.system("sudo git pull")!=0:
             hint("Echec pull CLIENT",4)
@@ -358,16 +358,16 @@ def MENU_resetCarteBDD():
     SQL_EXECUTE(QUERRY_addLog(setting.numeroBox,setting.nomBox,"RESET CARTE BDD",str(STRING_uidStrToInt(UID))) )
     RFID_waitRetireCarte()
 def MENU_resetLogQuerry():
-    os.system("sudo rm /home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt")
+    os.system("sudo rm "+setting.projet_path+"PICONFLEX2000-LOGS/LOG_QUERRY.txt")
     CLAVIER_get()
 def MENU_resetLogSQL():
-    os.system("sudo rm /home/pi/PICONFLEX2000-LOGS/LOG_SQL.txt")
+    os.system("sudo rm "+setting.projet_path+"PICONFLEX2000-LOGS/LOG_SQL.txt")
     CLAVIER_get()
 def MENU_resetLogError():
-    os.system("sudo rm /home/pi/PICONFLEX2000-LOGS/LOG_ERROR.txt")
+    os.system("sudo rm "+setting.projet_path+"PICONFLEX2000-LOGS/LOG_ERROR.txt")
     CLAVIER_get()
 def MENU_resetLogs():
-    os.system("sudo rm -r /home/pi/PICONFLEX2000-LOGS")
+    os.system("sudo rm -r "+setting.projet_path+"PICONFLEX2000-LOGS")
     CLAVIER_get()
 def MENU_setNomBox():
     return

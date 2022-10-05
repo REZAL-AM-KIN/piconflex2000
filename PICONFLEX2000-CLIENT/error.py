@@ -1,3 +1,5 @@
+projet_path="/".join(__file__.split("/")[:-2])+"/"
+
 print("Demarrage 'error.py'")
 error=traceback.format_exc()
 print(error)
@@ -7,7 +9,7 @@ hint(errortype,1)
 hint("",2)
 hint("",3)
 hint("",4)
-DATA_add("/home/pi/PICONFLEX2000-LOGS/LOG_ERROR.txt",error)
+DATA_add(projet_path+"PICONFLEX2000-LOGS/LOG_ERROR.txt",error)
 sleep(10)
 if errortype in ["SystemExit","KeyboardInterrupt"]:
     hint("Systeme Interrompu",2)

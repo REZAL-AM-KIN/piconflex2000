@@ -1,7 +1,6 @@
-script_path="/".join(__file__.split("/")[:-2])+"/"
+projet_path="/".join(__file__.split("/")[:-2])+"/"
 
 print("Démarrage 'boot.py'")
-
 exec(open(
     script_path+'PICONFLEX2000-CLIENT/launch.py').read())  # Permet de se servir directement de toutes les fonctionnalités de la box quand il est lancé (Très utile pour DEV)
 try:

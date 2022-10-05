@@ -1,6 +1,8 @@
+projet_path="/".join(__file__.split("/")[:-2])+"/"
+
 print("Demarrage 'DATA.py'")
 def DATA_setVariable(variableName,contenu):
-    fichierName="/home/pi/PICONFLEX2000-CLIENT/setting.py"
+    fichierName=projet_path+"PICONFLEX2000-CLIENT/setting.py"
     if type(contenu)==str:
         exec("setting."+variableName+"="+"'"+str(contenu)+"'")
     else:

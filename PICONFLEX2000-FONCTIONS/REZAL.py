@@ -41,13 +41,13 @@ def REZAL_getMAC():
                 MAC=open('/sys/class/net/%s/address' %dir).read()[0:17]
     return MAC
 def REZAL_getVersion():
-    seed(str(CRYPT_HashDossier("/home/pi/PICONFLEX2000-FONCTIONS",["setting.py",".git"]))+str(CRYPT_HashDossier("/home/pi/PICONFLEX2000-CLIENT",["setting.py",".git"])))
+    seed(str(CRYPT_HashDossier(setting.projet_path+"PICONFLEX2000-FONCTIONS",["setting.py",".git"]))+str(CRYPT_HashDossier(setting.projet_path+"PICONFLEX2000-CLIENT",["setting.py",".git"])))
     return str(random()).replace("0.","")[:3]
 def REZAL_restart():
     hint("REDEMARRAGE",1)
     hint("DU",2)
     hint("SCRIPT",3)
-    os.system("sudo python3 /home/pi/PICONFLEX2000-CLIENT/boot.py")
+    os.system("sudo python3 "+setting.projet_path+"PICONFLEX2000-CLIENT/boot.py")
     sys.exit()
 def REZAL_reboot():
     hint("REDEMARRAGE",1)
@@ -61,7 +61,7 @@ def REZAL_exit():
     hint("SCRIPT",3)
     sys.exit()
 def REZAL_synchQUERRYToSQL():
-    _SQLQUERRY=DATA_get("/home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt")
+    _SQLQUERRY=DATA_get(setting.projet_path+"PICONFLEX2000-LOGS/LOG_QUERRY.txt")
     if _SQLQUERRY!="":
         SQL_UPDATE(_SQLQUERRY)
-        os.system("sudo rm "+"/home/pi/PICONFLEX2000-LOGS/LOG_QUERRY.txt")
+        os.system("sudo rm "+setting.projet_path+"PICONFLEX2000-LOGS/LOG_QUERRY.txt")
