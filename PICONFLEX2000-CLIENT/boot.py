@@ -5,6 +5,7 @@ exec(open(
     projet_path+'PICONFLEX2000-CLIENT/launch.py').read())  # Permet de se servir directement de toutes les fonctionnalités de la box quand il est lancé (Très utile pour DEV)
 
 if config.debugging :
+    print("Attente de 3s")
     sleep(3)
 
 try:
