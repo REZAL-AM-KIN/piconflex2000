@@ -3,6 +3,10 @@ projet_path="/".join(__file__.split("/")[:-2])+"/"
 print("Démarrage 'boot.py'")
 exec(open(
     projet_path+'PICONFLEX2000-CLIENT/launch.py').read())  # Permet de se servir directement de toutes les fonctionnalités de la box quand il est lancé (Très utile pour DEV)
+
+if config.debugging :
+    sleep(3)
+
 try:
     exec(open(projet_path+'PICONFLEX2000-CLIENT/init.py').read())  # Effectue les premières communications avec le serveur
 except:
