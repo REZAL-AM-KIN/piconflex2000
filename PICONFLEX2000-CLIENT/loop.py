@@ -24,6 +24,12 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
 
         # rezalMode est à True, donc on fait la synchronisation des données de la carte avec celles de la BDD
         else:
+            # on test si la carte est une carte d'appro
+            if hashCodeType == CRYPT_hashage(config.codeAprro):
+                hint("Carte d'Appro",2)
+                sleep(2)
+                ## TO DO ##
+                break
             hint("UID: "+str(UID),2) #Affichage UID de la carte
 
             # Essais de récupération de l'argent de la carte de la BDD:
@@ -67,6 +73,15 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             hint("PERTE DU REZAL",4) #Affichage du problème
             REZAL_restart() #Redémarrage du système
         #Sinon la box est en rezalMode Off, qu'elle pingue ou non
+
+
+        # On test si la carte est une carte d'appro
+        if hashCodeType == CRYPT_hashage(config.codeAprro):
+            hint("Carte d'Appro", 2)
+            hint("!PAS DE REZAL!", 3)
+            hint("appuyer pour reboot", 3)
+            touche=CLAVIER_getRFID()
+            REZAL_restart()
 
         # Si le codeGuinche est périmé, c'est une carte non encore initialisée
         if hashCodeType!=CRYPT_hashage(config.codeGuinche):
