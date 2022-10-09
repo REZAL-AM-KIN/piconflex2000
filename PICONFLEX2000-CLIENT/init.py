@@ -23,10 +23,8 @@ if setting.rezalOn:  # Si la box à ping l'addresse IP déclarée du serveur:
     # Si il y a un bug dans la ligne suivante, la box n'est pas ajoutée dans la BDD
     # Si il y a un bug dans la deuxième ligne, la box n'a pas de comptoir associée
     # Si il y a un bug dans la troisième ligne, la comptoir n'as pas de produits associés
-    DATA_setVariable("rezalMode", bool(SQL_SELECT(QUERRY_getMode(setting.numeroBox))[0][
-                                           0]))  # Récupère le mode REZAL de la BDD (Variable empêchant à la box de communiquer avec le serveur)
-    DATA_setVariable("nomBox",
-                     SQL_SELECT(QUERRY_getNomBox(setting.numeroBox))[0][0])  # Récupère le nom du comptoir dans la BDD
+    DATA_setVariable("rezalMode", bool(SQL_SELECT(QUERRY_getMode(setting.numeroBox))[0][0]))  # Récupère le mode REZAL de la BDD (Variable empêchant à la box de communiquer avec le serveur)
+    DATA_setVariable("nomBox",SQL_SELECT(QUERRY_getNomBox(setting.numeroBox))[0][0])  # Récupère le nom du comptoir dans la BDD
     DATA_setVariable("produits", SQL_getProduits(setting.numeroBox))  # Récupère les produits de la box
 else:  # Si le serveur n'a pas répondu au ping:
     MENU_getCode(config.codeOffline,

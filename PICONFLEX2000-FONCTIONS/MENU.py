@@ -16,7 +16,7 @@ def MENU_menuModerateur():
     MENU_getCode(config.codeModerateur,"menuModerateur")
     hint("",4)
     MENU_getMenu(config.menuModerateur)
-def MENU_menuHelpeur():
+def MENU_menuHelper():
     MENU_getCode(config.codeHelper, "menuHelper")
     hint("",4)
     MENU_getMenu(config.menuHelper)
@@ -156,7 +156,7 @@ def MENU_getCode(code,texte, exitKeys=None, checkForCard=False):
         	if (_touche in exitKeys):
         		return -1
         try:
-            if int(_txt) in [code,config.codeGuinche]:
+            if int(_txt) in [code,config.codeAdmin]:
                 return
         except:
             pass
@@ -238,7 +238,7 @@ def MENU_getMontant(argent):
         elif (_touche==47):#_touche /
             return REZAL_restart()
         elif (_touche in [0,9]): #_touche TAB ou Calculator
-            error = MENU_getCode(config.codeHelper, "Code Helpeur", [0, 9], True) # On demande le code Helpeur et on donne la touche "calulator" ou la touche tab comme exitKeys et en vérifiant la présence d'une carte
+            error = MENU_getCode(config.codeHelper, "Code Helper", [0, 9], True) # On demande le code Helper et on donne la touche "calulator" ou la touche tab comme exitKeys et en vérifiant la présence d'une carte
             if error != -1:
                 MENU_rapportPbCarte()
 
@@ -297,7 +297,7 @@ def MENU_getCommande(argent):
         elif (_touche==42):
             REZAL_reboot()
         elif (_touche in [0,9]): #_touche TAB ou Calculator
-            error = MENU_getCode(config.codeHelper, "Code Helpeur", [0, 9], True) # On demande le code Helpeur et on donne la touche "calulator" ou la touche tab comme exitKeys
+            error = MENU_getCode(config.codeHelper, "Code Helper", [0, 9], True) # On demande le code Helper et on donne la touche "calulator" ou la touche tab comme exitKeys
             if error != -1:
             	MENU_rapportPbCarte()
 
