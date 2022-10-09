@@ -4,7 +4,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
         REZAL_synchQUERRYToSQL() #Synchronisation des requêtes SQL de la box avec le serveur BDD
     RFID_waitRetireCarte() #Attente d'absence de cartes
     MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
-    UID,argent,codeCarte,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
+    UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
     DATA_setVariable("rezalOn",bool(REZAL_pingServeur())) #Ping du serveur pour s'assurer que la connection est toujours présente
 
     # Bloc de traitement des données si la box est en ligne avec le serveur
@@ -41,9 +41,9 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                 RFID_setArgent(argent,UID) #Synchronisaton RFID
 
             # Le codeGuinche est périmé:
-            if codeCarte!=CRYPT_hashage(config.codeGuinche):
+            if hashCodeType!=CRYPT_hashage(config.codeGuinche):
                 hint("SYNCH RFID H CODE",4) #Affichage synchronisation
-                RFID_setHashCodeGuinche(UID) #Ecriture RFID du Hash du codeGuinche sur la carte
+                RFID_setHashCodeGuinche(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
 
             # Le hash de l'UID ne correspond pas au hash stocké sur la carte
             if hashUID!=CRYPT_hashage(UID):
@@ -69,7 +69,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
         #Sinon la box est en rezalMode Off, qu'elle pingue ou non
 
         # Si le codeGuinche est périmé, c'est une carte non encore initialisée
-        if codeCarte!=CRYPT_hashage(config.codeGuinche):
+        if hashCodeType!=CRYPT_hashage(config.codeGuinche):
             hint("DESYNCH RFID H CODE",2) #Affichage désynchronisation
             if not(setting.nomBox[0]=="C"): #Si la box n'est pas une caisse:
                 break #Arret de la transaction
@@ -78,7 +78,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             if not(CLAVIER_getRFID()==10): #Une autre touche que ENTER est saisie:
                 break #Arret de la transaction
             hint("SYNCH RFID H CODE",4) #Affichage synchronisation
-            RFID_setHashCodeGuinche(UID) #Ecriture RFID du Hash du codeGuinche sur la carte
+            RFID_setHashCodeGuinche(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
             DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addCarte(STRING_uidStrToInt(UID))) #Ajout de la carte dans la BDD pour une future synchronisation
             hint("SYNCH RFID H UID",4) #Affichage synchronisation
             RFID_setHashUID(UID)

@@ -149,8 +149,8 @@ def RFID_setArgent(montant,uidstring):
     montantHexa=( "0"*8+hex(max(0,montant))[2:] )[-8:]
     RFID_write(config.blockArgent,montantHexa,uidstring)
     RFID_write(config.blockHashArgent,CRYPT_hashage(int(montant)),uidstring)
-def RFID_setHashCodeGuinche(uidstring):
-    RFID_write(config.blockHashCodeGuinche,CRYPT_hashage(config.codeGuinche),uidstring)
+def RFID_setHashCodeType(codeType,uidstring):
+    RFID_write(config.blockHashCodeGuinche,CRYPT_hashage(codeType),uidstring)
 def RFID_setHashUID(uidstring):
     RFID_write(config.blockHashUID,CRYPT_hashage(RFID_getUID()),uidstring)
 
@@ -172,5 +172,5 @@ def RFID_resetCarte(uidstring):
     if config.debugging:
         print("## RFID_resetCarte ##")
     RFID_setArgent(0,uidstring)
-    RFID_setHashCodeGuinche(uidstring)
+    RFID_setHashCodeType(config.codeGuinche,uidstring)
     RFID_setHashUID(uidstring)

@@ -16,8 +16,9 @@ class config:  # Définition des variables reliée à l'objet config définissan
     # Code permettant de débloquer la box en mode Bar
     # Code permettant de débloquer la box en mode Nourriture
     # Code permettant le passage en mode hors ligne de la box
-    codeHash        = "AAAAAAAA"
-    codeGuinche     = 1
+    codeHash        = "AZERTYUIOP"
+    codeGuinche     = "100j"
+    codeAppro       = "oui"
     codeAdmin       = 2
     codeModerateur  = 3
     codeHelper      = 4
