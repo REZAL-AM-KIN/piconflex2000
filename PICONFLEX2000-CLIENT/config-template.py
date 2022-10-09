@@ -41,20 +41,21 @@ class config:  # Définition des variables reliée à l'objet config définissan
     blockHashUID            = 8
     blockHashCodeGuinche    = 10
 
-    minMontant      = 100
     # Montant en centimes minimal à pouvoir mettre pendant une transaction
-    maxTransaction  = 9900
+    minMontant = 100
     # Montant max à pouvoir être mis sur une carte
-    maxMontant      = 15000
+    maxTransaction = 9900
     # Montant en centime maximal à pouvoir être contenu sur une carte
-    menuAdmin       = ["menuAdmin", "resetBDD", "resetLogQuery", "resetLogSQL", "resetLogError"]
-    menuModerateur  = ["menuModerateur", "githubPull", "MAJGitClone"]
-    menuVP          = ["menuVP", "setNumeroBox", "setRezalMode", "setIPServeur", "setNomBox", "setLoginBDD", "setMDPBDD"]
-    menuHelper     = ["menuHelper", "fusionCartes", "setCaisse", "setKve", "supprimerTransaction", "resetCarte",
-                      "resetCarteRFID", "resetCarteBDD", "getCarteUID"]
-    menuUser        = ["menuUser", "viewMAC", "viewIP", "viewIPServeur", "viewPing", "viewProduits"]
-    menuPrincipal   = ["menuPrincipal", "menuUser", "menuHelper", "menuVP", "menuModerateur", "menuAdmin"]
-    # Liste des menus et leurs sous menus associés
+    maxMontant = 15000
 
-    debugging = False
+    # Liste des menus et leurs sous menus associés
+    menuAdmin = ["menuAdmin", "resetBDD", "resetLogQuery", "resetLogSQL", "resetLogError"]
+    menuModerateur = ["menuModerateur", "githubPull", "MAJGitClone"]
+    menuVP = ["menuVP", "setNumeroBox", "setRezalMode", "setIPServeur", "setNomBox", "setLoginBDD", "setMDPBDD"]
+    menuHelper = ["menuHelper", "fusionCartes", "setCaisse", "setKve", "supprimerTransaction", "resetCarte",
+                  "resetCarteRFID", "resetCarteBDD", "getCarteUID"]
+    menuUser = ["menuUser", "viewMAC", "viewIP", "viewIPServeur", "viewPing", "viewProduits"]
+    menuPrincipal = ["menuPrincipal", "menuUser", "menuHelper", "menuVP", "menuModerateur", "menuAdmin"]
+
     # pour avoir des affichages dans la console pour savoir à où le code en est
+    debugging = False
