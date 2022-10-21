@@ -49,7 +49,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             # Le codeGuinche est périmé:
             if hashCodeType!=CRYPT_hashage(config.codeGuinche):
                 hint("SYNCH RFID H CODE",4) #Affichage synchronisation
-                RFID_setHashCodeGuinche(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
+                RFID_setHashCodeType(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
 
             # Le hash de l'UID ne correspond pas au hash stocké sur la carte
             if hashUID!=CRYPT_hashage(UID):
@@ -93,7 +93,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             if not(CLAVIER_getRFID()==10): #Une autre touche que ENTER est saisie:
                 break #Arret de la transaction
             hint("SYNCH RFID H CODE",4) #Affichage synchronisation
-            RFID_setHashCodeGuinche(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
+            RFID_setHashCodeType(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
             DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addCarte(STRING_uidStrToInt(UID))) #Ajout de la carte dans la BDD pour une future synchronisation
             hint("SYNCH RFID H UID",4) #Affichage synchronisation
             RFID_setHashUID(UID)
