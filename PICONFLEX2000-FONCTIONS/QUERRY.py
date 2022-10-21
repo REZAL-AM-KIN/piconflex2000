@@ -45,3 +45,12 @@ def QUERRY_getProduits(numeroBox):
     return ("SELECT produits.reference, produits.nomProduit, produits.prix from ((produits JOIN produit_comptoir on produits.reference = produit_comptoir.produit_reference) join boxs on produit_comptoir.comptoir_id = boxs.comptoir) where boxs.numeroBox = '{}'".format(numeroBox))
 def QUERRY_addPb(UID, numeroBox):
     return ("INSERT INTO problems (UID, box) VALUES ('{}','{}');".format(UID, numeroBox))
+
+def QUERRY_getCommande(UID):
+    return ("""SELECT commandes.arrivee,comptoir.name FROM commandes
+    JOIN stock ON commandes.stock_id=stock.id
+    JOIN comptoir ON stock.comptoir_id=comptoir.id
+    WHERE commandes.UID='{}';""".format(UID))
+
+def QUERRY_validationCommande(UID):
+    return ("""UPDATE commandes SET arrivee  = 1 WHERE UID  = '{}';""".format(UID))
