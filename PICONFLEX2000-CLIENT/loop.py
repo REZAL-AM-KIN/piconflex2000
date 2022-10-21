@@ -27,10 +27,10 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             # on test si la carte est une carte d'appro
             if hashCodeType == CRYPT_hashage(config.codeAprro):
                 hint("Carte d'Appro",2)
-                sleep(2)
                 try:
                     request=SQL_SELECT(QUERRY_getCommande(STRING_uidStrToInt(UID)))
                     print(request)
+                    DATA_add(setting.projet_path + 'PICONFLEX2000-LOGS/LOG_SQL.txt', str(request) + "\n")
                     sleep(3)
                 except: #Echec (la carte (UID) est absente des commandes):
                     hint("PAS ASSOCIEE",4) #Affichage utilisateur de l'initialisation de la carte dans la BDD
