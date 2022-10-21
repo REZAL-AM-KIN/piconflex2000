@@ -79,7 +79,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
         if hashCodeType == CRYPT_hashage(config.codeAprro):
             hint("Carte d'Appro", 2)
             hint("!PAS DE REZAL!", 3)
-            hint("appuyer pour reboot", 3)
+            hint("appuyer pour reboot", 4)
             touche=CLAVIER_getRFID()
             REZAL_restart()
 
