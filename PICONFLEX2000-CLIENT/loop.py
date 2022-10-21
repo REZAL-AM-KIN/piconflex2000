@@ -28,7 +28,13 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             if hashCodeType == CRYPT_hashage(config.codeAprro):
                 hint("Carte d'Appro",2)
                 sleep(2)
-                ## TO DO ##
+                try:
+                    request=SQL_SELECT(QUERRY_getCommande(STRING_uidStrToInt(UID)))
+                    print(request)
+                    sleep(3)
+                except: #Echec (la carte (UID) est absente des commandes):
+                    hint("PAS ASSOCIEE",4) #Affichage utilisateur de l'initialisation de la carte dans la BDD
+                sleep(2)
                 break
             hint("UID: "+str(UID),2) #Affichage UID de la carte
 
