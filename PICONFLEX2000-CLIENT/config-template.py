@@ -51,7 +51,7 @@ class config:  # Définition des variables reliée à l'objet config définissan
 
     # Liste des menus et leurs sous menus associés
     menuAdmin = ["menuAdmin", "resetBDD", "resetLogQuery", "resetLogSQL", "resetLogError"]
-    menuModerateur = ["menuModerateur", "githubPull", "MAJGitClone"]
+    menuModerateur = ["menuModerateur", "githubPull", "MAJGitClone","setCarteAppro"]
     menuVP = ["menuVP", "setNumeroBox", "setRezalMode", "setIPServeur", "setNomBox", "setLoginBDD", "setMDPBDD"]
     menuHelper = ["menuHelper", "fusionCartes", "setCaisse", "setKve", "supprimerTransaction", "resetCarte",
                   "resetCarteRFID", "resetCarteBDD", "getCarteUID"]

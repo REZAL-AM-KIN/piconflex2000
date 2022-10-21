@@ -348,10 +348,6 @@ def MENU_viewPing():
     hint("PING SERVEUR: ...",4)
     hint("PING SERVEUR: "+str(REZAL_pingServeur()),4)
     CLAVIER_get()
-def MENU_resetCarteRFID():
-    hint("PRESENTEZ LA CARTE",4)
-    RFID_resetCarte()
-    RFID_waitRetireCarte()
 def MENU_resetCarteBDD():
     UID=RFID_getUID()
     SQL_EXECUTE(QUERRY_setMontant(STRING_uidStrToInt(UID),0))
@@ -380,9 +376,11 @@ def MENU_setKve():
 def MENU_supprimerTransaction():
     return
 def MENU_resetCarte():
-    RFID_resetCarte()
-    SQL_EXECUTE(QUERRY_setMontant(STRING_uidStrToInt(RFID_getUID()),0))
-    SQL_EXECUTE(QUERRY_addLog(setting.numeroBox,setting.nomBox,"RESET CARTE BDD",str(STRING_uidStrToInt(RFID_getUID()))) )
+    RFID_waitPresenterCarte()
+    UID = RFID_getUID()
+    RFID_resetCarte(UID)
+    SQL_EXECUTE(QUERRY_setMontant(STRING_uidStrToInt(UID),0))
+    SQL_EXECUTE(QUERRY_addLog(setting.numeroBox,setting.nomBox,"RESET CARTE BDD",str(STRING_uidStrToInt(UID))) )
     RFID_waitRetireCarte()
 def MENU_repairCarte():
     return
@@ -408,7 +406,14 @@ def MENU_rapportPbCarte():
     SQL_EXECUTE(QUERRY_addPb(STRING_uidStrToInt(RFID_getUID()),setting.numeroBox))
     MENU_clear()
     hint("INFO ENVOYEE",2)
-    hint("PRESSER UNE TOUCHE",3)
-    hint("UID:"+RFID_getUID(),3)
+    hint("UID:"+str(STRING_uidStrToInt(RFID_getUID())),3)
+    hint("PRESSER UNE TOUCHE",4)
     while CLAVIER_getRFID() in [0,9]:
         pass
+
+def MENU_setCarteAppro():
+    RFID_waitPresenterCarte()
+    UID = RFID_getUID()
+    RFID_setHashCodeType(config.codeAprro,UID)
+    RFID_setHashUID(UID)
+    RFID_waitRetireCarte()
