@@ -30,6 +30,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                 try:
                     request=SQL_SELECT(QUERRY_getCommandeEC(STRING_uidStrToInt(UID)))
                     DATA_add(setting.projet_path + 'PICONFLEX2000-LOGS/LOG_SQL.txt', str(request) + "\n")
+                    DATA_add(setting.projet_path + 'PICONFLEX2000-LOGS/LOG_SQL.txt', str(len(request)) + "\n")
                     if len(request)>1:
                         hint("Plusieurs CMD", 3)
                         hint("APPELLER REZAL", 4)
