@@ -41,7 +41,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                         if request[0][0]==setting.nomBox:
                             hint("SYNCH BDD", 3)
                             SQL_EXECUTE(QUERRY_validationCommande(STRING_uidStrToInt(UID)))
-                            hint("Status validé!", 4)
+                            hint("Status valide!", 4)
                         else:
                             hint("MAUVAIS PIANSS", 3)
                             hint("Dest: "+request[0][0], 4)
