@@ -409,6 +409,16 @@ def MENU_rapportPbCarte():
     hint("INFO ENVOYEE",2)
     hint("UID:"+str(STRING_uidStrToInt(UID)),3)
     hint("PRESSER UNE TOUCHE",4)
+    sleep(1)
+    while True:
+        _touche=CLAVIER_getRFID()
+        if _touche==None:#Carte retiree
+            hint("",4)
+            return
+        elif (_touche==47):#Touche /
+            REZAL_restart()
+        elif (_touche==42):#Touche *
+            REZAL_reboot()
     while CLAVIER_getRFID() in [0,9]:
         pass
 
