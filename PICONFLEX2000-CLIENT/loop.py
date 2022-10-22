@@ -46,8 +46,10 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                             hint("MAUVAIS PIANSS", 3)
                             hint("Dest: "+request[0], 4)
                         #Modifier la BDD pour dire que la cmd est arrivé
+                    sleep(1)
                 except: #Echec (la carte (UID) est absente des commandes):
                     hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
+                    sleep(1)
                 break
 
             hint("UID: "+str(UID),2) #Affichage UID de la carte
