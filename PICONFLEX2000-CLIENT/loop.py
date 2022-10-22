@@ -30,13 +30,26 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                 try:
                     request=SQL_SELECT(QUERRY_getCommandeEC(STRING_uidStrToInt(UID)))
                     DATA_add(setting.projet_path + 'PICONFLEX2000-LOGS/LOG_SQL.txt', str(request) + "\n")
-                    sleep(3)
+                    if len(request)>1:
+                        hint("Plusieurs CMD", 3)
+                        hint("APPELLER REZAL", 4)
+                    elif len(request)==0:
+                        hint("Pas de CMD en cours", 3)
+                    else:
+                        #test du pianss
+                        if request[0]==setting.nomBox:
+                            hint("SYNCH BDD", 3)
+                            SQL_EXECUTE(QUERRY_validationCommande(STRING_uidStrToInt(UID)))
+                            hint("Status validé!", 3)
+                        else:
+                            hint("MAUVAIS PIANSS", 3)
+                            hint("Dest: "+request[0], 4)
+                        #Modifier la BDD pour dire que la cmd est arrivé
                 except: #Echec (la carte (UID) est absente des commandes):
-                    hint("PAS ASSOCIEE",4) #Affichage utilisateur de l'initialisation de la carte dans la BDD
-                sleep(2)
+                    hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
                 break
-            hint("UID: "+str(UID),2) #Affichage UID de la carte
 
+            hint("UID: "+str(UID),2) #Affichage UID de la carte
             # Essais de récupération de l'argent de la carte de la BDD:
             try:
                 argentSQL=SQL_SELECT(QUERRY_getArgent(STRING_uidStrToInt(UID)))[0][0]
