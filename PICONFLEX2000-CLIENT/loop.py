@@ -38,13 +38,13 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                         hint("Pas de CMD en cours", 3)
                     else:
                         #test du pianss
-                        if request[0]==setting.nomBox:
+                        if request[0][0]==setting.nomBox:
                             hint("SYNCH BDD", 3)
                             SQL_EXECUTE(QUERRY_validationCommande(STRING_uidStrToInt(UID)))
                             hint("Status validé!", 3)
                         else:
                             hint("MAUVAIS PIANSS", 3)
-                            hint("Dest: "+request[0], 4)
+                            hint("Dest: "+request[0][0], 4)
                         #Modifier la BDD pour dire que la cmd est arrivé
                     sleep(1)
                 except: #Echec (la carte (UID) est absente des commandes):
