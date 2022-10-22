@@ -41,7 +41,7 @@ def RFID_waitPresenterCarte():
             hint("",4)
             _counter=1
         if _counter==1:
-            hint("RETIRER LA CARTE",4)
+            hint("PRESENTER LA CARTE",4)
             _counter=2
     return False
 
