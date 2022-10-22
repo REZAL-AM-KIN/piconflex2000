@@ -34,6 +34,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                     if len(request)>1:
                         hint("Plusieurs CMD", 3)
                         hint("APPELLER REZAL", 4)
+                        sleep(2)
                     elif len(request)==0:
                         hint("Pas de CMD en cours", 3)
                     else:
@@ -45,6 +46,9 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                         else:
                             hint("MAUVAIS PIANSS", 3)
                             hint("Dest: "+request[0][0], 4)
+                            hint("", 3)
+                            sleep(0.5)
+                            hint("MAUVAIS PIANSS", 3)
                         #Modifier la BDD pour dire que la cmd est arrivé
                 except: #Echec (la carte (UID) est absente des commandes):
                     hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
