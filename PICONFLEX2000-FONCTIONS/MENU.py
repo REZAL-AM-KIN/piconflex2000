@@ -403,10 +403,11 @@ def MENU_getCarteUID():
             REZAL_reboot()
 
 def MENU_rapportPbCarte():
-    SQL_EXECUTE(QUERRY_addPb(STRING_uidStrToInt(RFID_getUID()),setting.numeroBox))
-    MENU_clear()
+    RFID_waitPresenterCarte()
+    UID=RFID_getUID()
+    SQL_EXECUTE(QUERRY_addPb(STRING_uidStrToInt(UID),setting.numeroBox))
     hint("INFO ENVOYEE",2)
-    hint("UID:"+str(STRING_uidStrToInt(RFID_getUID())),3)
+    hint("UID:"+str(STRING_uidStrToInt(UID)),3)
     hint("PRESSER UNE TOUCHE",4)
     while CLAVIER_getRFID() in [0,9]:
         pass
