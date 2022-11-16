@@ -9,6 +9,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
     if setting.rezalOn:
         if hashCodeType == CRYPT_hashage(config.codeGuinche) or len(SQL_SELECT(QUERRY_getArgent(STRING_uidStrToInt(UID))))>0:
             hint("CARTE D'ARGENT",4) #Affichage synchronisation
+            sleep(2)
             break
 
         # syncronisation des données sur la carte
