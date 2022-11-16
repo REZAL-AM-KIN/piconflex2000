@@ -76,7 +76,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
 
             # Le codeGuinche est périmé:
             if hashCodeType!=CRYPT_hashage(config.codeGuinche):
-                hint("SYNCH RFID H CODE",4) #Affichage synchronisation
+                hint("SYNCH RFID H TYPE",4) #Affichage synchronisation
                 RFID_setHashCodeType(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
 
             # Le hash de l'UID ne correspond pas au hash stocké sur la carte
@@ -113,14 +113,14 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
 
         # Si le codeGuinche est périmé, c'est une carte non encore initialisée
         if hashCodeType!=CRYPT_hashage(config.codeGuinche):
-            hint("DESYNCH RFID H CODE",2) #Affichage désynchronisation
+            hint("DESYNCH RFID H TYPE",2) #Affichage désynchronisation
             if not(setting.nomBox[0]=="C"): #Si la box n'est pas une caisse:
                 break #Arret de la transaction
             #Si la babass est une caisse, on peut reset la carte, et elle sera synchronisée quand la babass retrouve la connexion
             hint("ENTRER POUR RESET",3) #Instruction pour l'utilisateur
             if not(CLAVIER_getRFID()==10): #Une autre touche que ENTER est saisie:
                 break #Arret de la transaction
-            hint("SYNCH RFID H CODE",4) #Affichage synchronisation
+            hint("SYNCH RFID H TYPE",4) #Affichage synchronisation
             RFID_setHashCodeType(config.codeGuinche,UID) #Ecriture RFID du Hash du codeGuinche sur la carte
             DATA_add(setting.projet_path+'PICONFLEX2000-LOGS/LOG_QUERRY.txt',QUERRY_addCarte(STRING_uidStrToInt(UID))) #Ajout de la carte dans la BDD pour une future synchronisation
             hint("SYNCH RFID H UID",4) #Affichage synchronisation
@@ -167,7 +167,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
     newMontant=argent+montant #Calcul du nouveau montant de la carte
     # Si le nouveau montant est négatif:
     if newMontant<0:
-        hint("CREDIT INSIFFISANT",2)
+        hint("CREDIT INSUFFISANT",2)
         hint("NE PAS SERVIR",3)
         break #Arret de la transaction
     # Si le nouveau montant n'est pas négatif, on effectue le débuquage sur la bdd puis sur la carte
