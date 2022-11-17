@@ -1,6 +1,7 @@
 print("Demarrage 'loop_secss.py'")
 while True: #Seconde boucle infinie permettant d'utiliser la commande "break" pour arreter la transaction
     RFID_waitRetireCarte() #Attente d'absence de cartes
+    #vide la ligne
     MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
 
     UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
@@ -30,3 +31,9 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             hint("",4) #Affichage synchronisation
             sleep(0.5)
             hint("ATTENTE COMMANDES",4) #Affichage synchronisation
+
+    elif setting.rezalMode:  # Si la box ne ping plus mais est en rezalMode On
+        hint("PERTE DU REZAL", 3)  # Affichage du problème
+        hint("REBOOT DANS 3s", 4)
+        sleep(3)
+        REZAL_restart()  # Redémarrage du système
