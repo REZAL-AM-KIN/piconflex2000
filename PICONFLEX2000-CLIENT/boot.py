@@ -14,7 +14,9 @@ except:
     exec(open(projet_path+'PICONFLEX2000-CLIENT/error.py').read())  # Script de gestion et affichage des erreurs
 while True:  # Boucle infinie du script
     try:
-        exec(open(
-            projet_path+'PICONFLEX2000-CLIENT/loop.py').read())  # Execution du script se répétant jusqu'à l'arrêt du système
+        if setting.nomBox == "Secss":
+            exec(open(projet_path+'PICONFLEX2000-CLIENT/loop_secss.py').read())  # Execution du script en mode secss, se répétant jusqu'à l'arrêt du système
+        else:
+            exec(open(projet_path+'PICONFLEX2000-CLIENT/loop.py').read())  # Execution du script se répétant jusqu'à l'arrêt du système
     except:
         exec(open(projet_path+'PICONFLEX2000-CLIENT/error.py').read())  # Script de gestion et affichage des erreurs
