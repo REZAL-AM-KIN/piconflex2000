@@ -46,14 +46,17 @@ def QUERRY_getProduits(numeroBox):
 def QUERRY_addPb(UID, numeroBox):
     return ("INSERT INTO problems (UID, box) VALUES ('{}','{}');".format(UID, numeroBox))
 
-def QUERRY_getCommandeEC(UID):
-    return ("""SELECT comptoir.name FROM commandes
+def QUERRY_getCommandeEnCours(UID):
+    return ("""SELECT comptoir.name,commandes.id,stock.id,commandes.quantite FROM commandes
     JOIN stock ON commandes.stock_id=stock.id
     JOIN comptoir ON stock.comptoir_id=comptoir.id
     WHERE commandes.UID='{}' AND commandes.arrivee=0;""".format(UID))
 
-def QUERRY_validationCommande(UID):
-    return ("""UPDATE commandes SET arrivee  = 1 WHERE UID  = '{}' and arrivee  = '0';""".format(UID))
+def QUERRY_validationCommande(commandes_id):
+    return ("""UPDATE commandes SET arrivee  = 1 WHERE id  = '{}';""".format(commandes_id))
+
+def QUERRY_ajoutStock(stock_id,commandes_quantite):
+    return ("""UPDATE stock SET stock.stock  = stock.stock+{} WHERE id  = '{}';""".format(commandes_quantite,stock_id))
 
 
 def QUERRY_updateUIDcarteCommande(UID):

@@ -28,31 +28,28 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             if hashCodeType == CRYPT_hashage(config.codeAprro):
                 hint("Carte d'Appro",2)
                 try:
-                    request=SQL_SELECT(QUERRY_getCommandeEC(STRING_uidStrToInt(UID)))
-                    if len(request)>1:
-                        hint("Plusieurs CMD", 3)
-                        hint("APPELLER REZAL", 4)
-                        sleep(2)
-                    elif len(request)==0:
+                    requests=SQL_SELECT(QUERRY_getCommandeEnCours(STRING_uidStrToInt(UID)))
+                    if len(requests)==0:
                         hint("Pas de CMD en cours", 3)
                     else:
-                        #test du pianss
-                        if request[0][0]==setting.nomBox:
-                            hint("SYNCH BDD", 3)
-                            SQL_EXECUTE(QUERRY_validationCommande(STRING_uidStrToInt(UID)))
-                            hint("Status valide!", 4)
-                        else:
-                            hint("MAUVAIS PIANSS", 3)
-                            hint("Dest: "+request[0][0], 4)
-                            hint("", 3)
-                            sleep(0.5)
-                            hint("MAUVAIS PIANSS", 3)
-                            sleep(0.5)
-                            hint("", 3)
-                            sleep(0.5)
-                            hint("MAUVAIS PIANSS", 3)
-                        #Modifier la BDD pour dire que la cmd est arrivé
-                except: #Echec (la carte (UID) est absente des commandes):
+                        for request in requests:
+                            #test du pianss
+                            if request[0]==setting.nomBox:
+                                hint("SYNCH BDD", 3)
+                                SQL_EXECUTE(QUERRY_ajoutStock(request[2],request[3]))
+                                SQL_EXECUTE(QUERRY_validationCommande(request[1]))
+                                hint("Status valide!", 4)
+                            else:
+                                hint("MAUVAIS PIANSS", 3)
+                                hint("Dest: "+[0], 4)
+                                hint("", 3)
+                                sleep(0.5)
+                                hint("MAUVAIS PIANSS", 3)
+                                sleep(0.5)
+                                hint("", 3)
+                                sleep(0.5)
+                                hint("MAUVAIS PIANSS", 3)
+                except: #Echec dans la querry
                     hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
                 sleep(2)
                 break
