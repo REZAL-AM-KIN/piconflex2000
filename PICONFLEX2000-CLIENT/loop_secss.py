@@ -2,6 +2,7 @@ print("Demarrage 'loop_secss.py'")
 while True: #Seconde boucle infinie permettant d'utiliser la commande "break" pour arreter la transaction
     RFID_waitRetireCarte() #Attente d'absence de cartes
     SQL_EXECUTE(QUERRY_clearUIDcarteCommande()) #vidage de la bdd contenant l'uid de la carte de commande
+    print("MENU_menuPrincipal")
     MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
 
     UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
