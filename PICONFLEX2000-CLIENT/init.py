@@ -43,6 +43,8 @@ elif setting.nomBox[0] == "B":
     MENU_getCode(config.codeBar, "Code Bar")
 elif setting.nomBox[0] == "N":
     MENU_getCode(config.codeNourriture, "Code Nourriture")
+elif setting.nomBox[0] == "S":
+    MENU_getCode(config.codeSecss, "Code Sec'ss")
 else:  # La premère lettre du nom de la box de correspond pas aux attentes du script, le script se ferme
     hint("MAUVAIS NOMBOX", 4)
     REZAL_restart()  # Redemarrage système
