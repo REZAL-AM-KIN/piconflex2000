@@ -307,7 +307,7 @@ def MENU_getMenu(MENUS):
     _touche=1
     while True:
         if config.debugging:
-            DATA_add(projet_path + "PICONFLEX2000-LOGS/LOG_ERROR.txt", time())
+            DATA_add(projet_path + "PICONFLEX2000-LOGS/LOG_ERROR.txt", "## "+str(time())+"\n")
         if _touche==None:#Carte retiree
             return
         elif(_touche in [48,49,50,51,52,53,54,55,56,57]):#touches numpad
