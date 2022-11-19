@@ -1,7 +1,7 @@
 print("Demarrage 'loop_secss.py'")
 while True: #Seconde boucle infinie permettant d'utiliser la commande "break" pour arreter la transaction
     RFID_waitRetireCarte() #Attente d'absence de cartes
-    #vide la ligne
+    SQL_EXECUTE(QUERRY_clearUIDcarteCommande()) #vidage de la bdd contenant l'uid de la carte de commande
     MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
 
     UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
@@ -22,6 +22,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             RFID_setHashUID(UID) #Ecriture du hash de l'UID sur la carte
 
         # ecriture de l'UID dans la BDD
+        SQL_EXECUTE(QUERRY_updateUIDcarteCommande(STRING_uidStrToInt(UID)))
         hint("BDD SYNC",3) #Affichage synchronisation
         hint("ATTENTE COMMANDES",4) #Affichage synchronisation
 
@@ -31,6 +32,9 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             hint("",4) #Affichage synchronisation
             sleep(0.5)
             hint("ATTENTE COMMANDES",4) #Affichage synchronisation
+
+        SQL_EXECUTE(QUERRY_clearUIDcarteCommande())
+        hint("BDD CLEAN",3) #Affichage synchronisation
 
     elif setting.rezalMode:  # Si la box ne ping plus mais est en rezalMode On
         hint("PERTE DU REZAL", 3)  # Affichage du problème

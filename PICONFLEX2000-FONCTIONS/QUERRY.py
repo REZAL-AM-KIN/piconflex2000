@@ -53,4 +53,11 @@ def QUERRY_getCommandeEC(UID):
     WHERE commandes.UID='{}' AND commandes.arrivee=0;""".format(UID))
 
 def QUERRY_validationCommande(UID):
-    return ("""UPDATE commandes SET arrivee  = 1 WHERE UID  = '{}';""".format(UID))
+    return ("""UPDATE commandes SET arrivee  = 1 WHERE UID  = '{}' and arrivee  = '0';""".format(UID))
+
+
+def QUERRY_updateUIDcarteCommande(UID):
+    return ("""UPDATE uid_carte_commande SET UID  = '{}' WHERE id  = 1;""".format(UID))
+
+def QUERRY_clearUIDcarteCommande():
+    return ("""UPDATE uid_carte_commande SET UID  = NULL WHERE id  = 1;""")
