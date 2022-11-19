@@ -302,10 +302,14 @@ def MENU_getCommande(argent):
             	MENU_rapportPbCarte()
 
 def MENU_getMenu(MENUS):
+    if config.debugging:
+        print("MENU_getMenu")
     _num=0
     _menu=MENUS[0]
     _touche=1
     while True:
+        if config.debugging:
+            print("while MENU_getMenu")
         if _touche==None:#Carte retiree
             return
         elif(_touche in [48,49,50,51,52,53,54,55,56,57]):#touches numpad

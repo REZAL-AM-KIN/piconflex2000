@@ -14,9 +14,9 @@ def RFID_carteCheck():
     while (time()-_time<0.5):
         if RFID_presence():
             return True
-        if config.debugging:
-            #permet de ne passe que 2 fois dans la boucle, pour eviter de remplir la console
-            sleep(0.3)
+        # if config.debugging:
+        #     #permet de ne passe que 2 fois dans la boucle, pour eviter de remplir la console
+        #     sleep(0.3)
     return False
 def RFID_waitRetireCarte():
     if config.debugging:

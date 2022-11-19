@@ -13,6 +13,8 @@ def CLAVIER_get():
 
 #modification du 17/05/2022 par C'tautomatiyx: En cas de changement d'état de présence de carte, les fonctions ne renvoie plus 0 mais None et ceux pour pouvoir utiliser la touche "calculator de certain clavier"
 def CLAVIER_getRFID():
+    if config.debugging:
+        print("CLAVIER_getRFID")
     stdscr = curses.initscr()
     stdscr.nodelay(True)
     curses.cbreak()
@@ -20,7 +22,7 @@ def CLAVIER_getRFID():
     _touche=-1
     while (_touche==-1):
         if config.debugging:
-            DATA_add(projet_path + "PICONFLEX2000-LOGS/LOG_SQL.txt", "## "+str(time())+"\n")
+            print("while CLAVIER_getRFID")
         if not(RFID_carteCheck()):
             _touche=None
         else:
