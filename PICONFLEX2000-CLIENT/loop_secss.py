@@ -35,6 +35,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
 
         SQL_EXECUTE(QUERRY_clearUIDcarteCommande())
         hint("BDD CLEAN",3) #Affichage synchronisation
+        hint("",4)
 
     elif setting.rezalMode:  # Si la box ne ping plus mais est en rezalMode On
         hint("PERTE DU REZAL", 3)  # Affichage du problème
