@@ -306,6 +306,8 @@ def MENU_getMenu(MENUS):
     _menu=MENUS[0]
     _touche=1
     while True:
+        if config.debugging:
+            print(time())
         if _touche==None:#Carte retiree
             return
         elif(_touche in [48,49,50,51,52,53,54,55,56,57]):#touches numpad
