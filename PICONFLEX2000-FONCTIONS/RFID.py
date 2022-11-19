@@ -12,8 +12,6 @@ def RFID_carteCheck():
         print("## RFID_carteCheck ##")
     _time=time()
     while (time()-_time<0.5):
-        if config.debugging:
-            print("while RFID_carteCheck")
         if RFID_presence():
             return True
         # if config.debugging:
