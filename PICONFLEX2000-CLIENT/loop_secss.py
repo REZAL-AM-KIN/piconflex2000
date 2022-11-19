@@ -5,6 +5,8 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
     print("MENU_menuPrincipal")
     MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
 
+    print("fin MENU_menuPrincipal")
+    sleep(3)
     UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
     DATA_setVariable("rezalOn", bool(REZAL_pingServeur())) #Ping du serveur pour s'assurer que la connection est toujours présente
 
