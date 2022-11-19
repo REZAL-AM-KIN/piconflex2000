@@ -7,7 +7,7 @@ class setting:
     # Nom de la box (Données par la BDD au démarrage), il définie le rôle de la box selon la première lettre (ATTENTION: Première lettre toujours en majuscule)
     nomBox = 'BZ2'
     # Numéro de la box, permet d'identifié de façon unique les boxs (clé primaire) pour la BDD
-    numeroBox = 64
+    numeroBox = 0
     # Version du système, permet de savoir quand une MAJ est a faire
     version = ''
     # Paramètre indiquand au système si la box a ping le serveur (010)
