@@ -29,6 +29,8 @@ def CLAVIER_getRFID():
     curses.endwin()
     return _touche
 def CLAVIER_getNotRFID():
+    if config.debugging:
+        print("CLAVIER_getNotRFID")
     stdscr = curses.initscr()
     stdscr.nodelay(True)
     curses.cbreak()
@@ -36,7 +38,7 @@ def CLAVIER_getNotRFID():
     _touche=-1
     while (_touche==-1):
         if config.debugging:
-            print(time())
+            DATA_add(projet_path+"PICONFLEX2000-LOGS/LOG_ERROR.txt","## "+str(time())+"\n")
         if (RFID_carteCheck()):
             _touche=None
         else:
