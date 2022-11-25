@@ -32,26 +32,49 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                     if len(requests)==0:
                         hint("Pas de CMD en cours", 3)
                     else:
+                        listeAutresPianss=[]
+                        cmdOK=False
                         for request in requests:
                             #test du pianss
                             if request[0]==setting.nomBox:
                                 hint("SYNCH BDD", 3)
                                 SQL_EXECUTE(QUERRY_ajoutStock(request[2],request[3]))
                                 SQL_EXECUTE(QUERRY_validationCommande(request[1]))
-                                hint("Status valide!", 4)
+                                hint("Status valide!", 3)
+                                cmdOK = True
                             else:
-                                hint("MAUVAIS PIANSS", 3)
-                                hint("Dest: "+[0], 4)
-                                hint("", 3)
-                                sleep(0.5)
-                                hint("MAUVAIS PIANSS", 3)
-                                sleep(0.5)
-                                hint("", 3)
-                                sleep(0.5)
-                                hint("MAUVAIS PIANSS", 3)
+                                if request[0] not in listeAutresPianss:
+                                    listeAutresPianss.append(request[0])
+                        if len(listeAutresPianss)!=0:
+                            if cmdOK:
+                                _ligne1="AUTRES PIANSS:"
+                            else:
+                                _ligne1="MAUVAIS PIANSS:"
+                            _ligne2="Dest: "+",".join(listeAutresPianss)
+                            _ligne3=""
+                            _ligne4=""
+                            if len(_ligne2)>20:
+                                _ligne3=_ligne2[20:]
+                                _ligne2=_ligne2[:20]
+                            if len(_ligne3)>20:
+                                _ligne4=_ligne3[20:]
+                                _ligne3=_ligne3[:20]
+                            hint(_ligne1,1)
+                            hint(_ligne2,2)
+                            hint(_ligne3,3)
+                            hint(_ligne3,4)
+                            while RFID_carteCheck():
+                                hint(_ligne1, 1)
+                                sleep(0.3)
+                                hint("", 1)
+                                sleep(0.3)
                 except: #Echec dans la querry
                     hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
-                sleep(2)
+                while RFID_carteCheck():
+                    hint("RETIRER CARTE", 4)
+                    sleep(0.3)
+                    hint("", 4)
+                    sleep(0.3)
                 break
 
             hint("UID: "+str(UID),2) #Affichage UID de la carte
