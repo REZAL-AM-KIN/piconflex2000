@@ -45,6 +45,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                             else:
                                 if request[0] not in listeAutresPianss:
                                     listeAutresPianss.append(request[0])
+                        sleep(0.5)
                         if len(listeAutresPianss)!=0:
                             if cmdOK:
                                 _ligne1="AUTRES PIANSS:"

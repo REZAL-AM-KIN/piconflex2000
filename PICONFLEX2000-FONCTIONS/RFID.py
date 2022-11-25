@@ -128,15 +128,15 @@ def RFID_write(block,TAG,uidstring):
                         if config.debugging:
                             print(str(TAG_read)+" / "+str(TAG))
                         hint("! ERREUR ECRITURE  !",4)
-                        sleep(0.1)
+                        sleep(0.4)
                         hint("",4)
                 else:
                     hint("PB ECRITURE-STATUS",4)
-                    sleep(0.2)
+                    sleep(0.4)
                     hint("",4)
         except:
             hint("!PROBLEME ECRITURE!",4)
-            sleep(0.2)
+            sleep(0.4)
             hint("",4)
         if config.debugging:
             sleep(1)
@@ -166,7 +166,7 @@ def RFID_getUID():
                     return uidstring
         except:
             hint("PROBLEME LECTURE UID",4)
-            sleep(0.1)
+            sleep(0.4)
             hint("",4)
 def RFID_resetCarte(uidstring):
     if config.debugging:

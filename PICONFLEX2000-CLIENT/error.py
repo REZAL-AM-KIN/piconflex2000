@@ -10,7 +10,7 @@ hint("",2)
 hint("",3)
 hint("",4)
 DATA_add(projet_path+"PICONFLEX2000-LOGS/LOG_ERROR.txt",error)
-sleep(10)
+sleep(5)
 if errortype in ["SystemExit","KeyboardInterrupt"]:
     hint("Systeme Interrompu",2)
     hint("a distance",3)
