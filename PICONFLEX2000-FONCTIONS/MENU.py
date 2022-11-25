@@ -8,6 +8,24 @@ def MENU_menuPrincipal():
     MENU_clear()
     hint(str(setting.nomBox)+"-"+str(setting.numeroBox)+"|"+str(int(setting.rezalNet))+str(int(setting.rezalOn))+str(int(setting.rezalMode))+"|V"+str(setting.version),1)
     MENU_getMenu(config.menuPrincipal)
+def MENU_menuPrincipalSecss():
+    if config.debugging:
+        print("MENU_menuPrincipalSecss")
+    MENU_clear()
+    hint(str(setting.nomBox)+"-"+str(setting.numeroBox)+"|"+str(int(setting.rezalNet))+str(int(setting.rezalOn))+str(int(setting.rezalMode))+"|V"+str(setting.version),1)
+    SQL_EXECUTE(QUERRY_clearUIDcarteCommande())
+    _touche=1
+    while True:
+        hint("Sec'ss",2)
+        if config.debugging:
+            print("while MENU_menuPrincipalSecss")
+        if _touche==None:#Carte retiree
+            return
+        elif (_touche==47):#Touche /
+            REZAL_restart()
+        elif (_touche==42):#Touche *
+            REZAL_reboot()
+        _touche=CLAVIER_getNotRFID()
 def MENU_menuAdmin():
     MENU_getCode(config.codeAdmin,"menuAdmin")
     hint("",4)

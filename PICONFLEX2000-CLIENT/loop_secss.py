@@ -2,22 +2,18 @@ print("Demarrage 'loop_secss.py'")
 while True: #Seconde boucle infinie permettant d'utiliser la commande "break" pour arreter la transaction
     RFID_waitRetireCarte() #Attente d'absence de cartes
     SQL_EXECUTE(QUERRY_clearUIDcarteCommande()) #vidage de la bdd contenant l'uid de la carte de commande
-    print("MENU_menuPrincipal")
-    MENU_menuPrincipal() #Attente d'une carte et possibilité de naviguer dans les menus
+    MENU_menuPrincipalSecss() #Attente d'une carte ou des touches / ou *
 
-    print("fin MENU_menuPrincipal")
-    sleep(3)
     UID,argent,hashCodeType,hashUID,hashArgent=RFID_readCarte() #Multi lecture des données de la carte
     DATA_setVariable("rezalOn", bool(REZAL_pingServeur())) #Ping du serveur pour s'assurer que la connection est toujours présente
 
     if setting.rezalOn:
         if hashCodeType == CRYPT_hashage(config.codeGuinche) or len(SQL_SELECT(QUERRY_getArgent(STRING_uidStrToInt(UID))))>0:
-            hint("CARTE D'ARGENT",4)
-            sleep(0.5)
-            hint("",4)
-            sleep(0.5)
-            hint("CARTE D'ARGENT",4)
-            sleep(1)
+            while RFID_carteCheck():
+                hint("CARTE D'ARGENT",4)
+                sleep(0.3)
+                hint("",4)
+                sleep(0.3)
             break
 
         # syncronisation des données sur la carte
