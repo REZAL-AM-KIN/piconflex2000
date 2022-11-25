@@ -52,21 +52,18 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
                                 _ligne1="MAUVAIS PIANSS:"
                             _ligne2="Dest: "+",".join(listeAutresPianss)
                             _ligne3=""
-                            _ligne4=""
                             if len(_ligne2)>20:
                                 _ligne3=_ligne2[20:]
                                 _ligne2=_ligne2[:20]
-                            if len(_ligne3)>20:
-                                _ligne4=_ligne3[20:]
-                                _ligne3=_ligne3[:20]
                             hint(_ligne1,1)
                             hint(_ligne2,2)
                             hint(_ligne3,3)
-                            hint(_ligne3,4)
                             while RFID_carteCheck():
                                 hint(_ligne1, 1)
+                                hint("RETIRER CARTE", 4)
                                 sleep(0.3)
                                 hint("", 1)
+                                hint("", 4)
                                 sleep(0.3)
                 except: #Echec dans la querry
                     hint("ERR QUERRY",3) #Affichage utilisateur de l'initialisation de la carte dans la BDD
