@@ -17,9 +17,9 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
             break
 
         # syncronisation des données sur la carte
-        if hashCodeType!=CRYPT_hashage(config.codeAprro):
+        if hashCodeType!=CRYPT_hashage(config.codeAppro):
             hint("SYNCH RFID H TYPE",4) #Affichage synchronisation
-            RFID_setHashCodeType(config.codeAprro,UID)
+            RFID_setHashCodeType(config.codeAppro,UID)
         if hashUID!=CRYPT_hashage(UID):
             hint("SYNCH RFID H UID",4) #Affichage synchronisation
             RFID_setHashUID(UID) #Ecriture du hash de l'UID sur la carte

@@ -25,7 +25,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
         # rezalMode est à True, donc on fait la synchronisation des données de la carte avec celles de la BDD
         else:
             # on test si la carte est une carte d'appro
-            if hashCodeType == CRYPT_hashage(config.codeAprro):
+            if hashCodeType == CRYPT_hashage(config.codeAppro):
                 hint("Carte d'Appro",2)
                 try:
                     requests=SQL_SELECT(QUERRY_getCommandeEnCours(STRING_uidStrToInt(UID)))
@@ -120,7 +120,7 @@ while True: #Seconde boucle infinie permettant d'utiliser la commande "break" po
 
 
         # On test si la carte est une carte d'appro
-        if hashCodeType == CRYPT_hashage(config.codeAprro):
+        if hashCodeType == CRYPT_hashage(config.codeAppro):
             hint("Carte d'Appro", 2)
             hint("!PAS DE REZAL!", 3)
             hint("appuyer pour reboot", 4)

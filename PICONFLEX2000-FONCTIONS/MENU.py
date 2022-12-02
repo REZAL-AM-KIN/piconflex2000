@@ -447,6 +447,6 @@ def MENU_rapportPbCarte():
 def MENU_setCarteAppro():
     RFID_waitPresenterCarte()
     UID = RFID_getUID()
-    RFID_setHashCodeType(config.codeAprro,UID)
+    RFID_setHashCodeType(config.codeAppro,UID)
     RFID_setHashUID(UID)
     RFID_waitRetireCarte()
